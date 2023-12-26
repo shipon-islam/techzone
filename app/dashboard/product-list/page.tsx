@@ -2,7 +2,7 @@ import ImageDelete from "@/components/dashboard/ImageDelete";
 import UploadProduct from "@/components/dashboard/UploadProduct";
 import prisma from "@/prisma/db";
 import Image from "next/image";
-
+export const revalidate = 5;
 export default async function ProductList() {
   const data = await prisma.gallery.findMany();
 
