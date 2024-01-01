@@ -23,7 +23,7 @@ export default async function Home() {
               Get Started
             </button>
           </aside>
-          <div className="hidden">
+          <div className="hidden sm:block">
             <HeroSVG />
           </div>
         </div>
