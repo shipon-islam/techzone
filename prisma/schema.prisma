@@ -7,32 +7,49 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-type Images {
-  key String
-  url String
-}
-
 enum Role {
   USER
   ADMIN
 }
 
+type Image {
+  url  String
+  type String
+}
+
+type Rating {
+  rate  Float
+  count Int
+}
+
 model User {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
   firstname String
   lastname  String
-  email     String @unique
+  email     String     @unique
   password  String
   avatar    String
-  role      Role   @default(USER)
+  role      Role       @default(USER)
+  cardLists CardList[]
 }
 
-model Gallery {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  image Images
+model Products {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  price       Float
+  description String
+  category    String
+  features    String[]
+  images      Image[]
+  rating      Rating?
+  cardLists   CardList[]
 }
 
-model Todos {
-  id   String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
+model CardList {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  quantity  Int      @default(0)
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @db.ObjectId
+  product   Products @relation(fields: [productId], references: [id])
+  productId String   @db.ObjectId
 }

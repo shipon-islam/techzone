@@ -1,3 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.bg-curved {
+  clip-path: ellipse(90% 72% at 50% 84%);
+}
+
+#circle4 {
+  animation: circleAni2 2s ease-in-out infinite;
+  transform-origin: center;
+  transition-delay: -0.5s;
+}
+#circle3 {
+  animation: circleAni2 2s ease-in-out infinite;
+  transform-origin: center;
+}
+#circle2 {
+  animation: circleAni1 2s ease-in-out infinite;
+  transform-origin: center;
+}
+#circle1 {
+  animation: circleAni 2s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes circleAni {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes circleAni2 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes circleAni1 {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+#curve2 {
+  animation: curve2 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes curve2 {
+  0% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
+}

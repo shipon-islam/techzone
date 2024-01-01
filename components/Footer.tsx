@@ -6,18 +6,18 @@ import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-overlay h-[20rem] text-gray-900 ">
+    <footer className="bg-overlay h-[44rem] sm:h-[27rem] lg:h-[20rem] text-gray-900 overflow-hidden">
       <section className="container relative  border-b border-black ">
-        <div className="h-[15rem]"></div>
+        <div className="h-[40rem] sm:h-[22rem] lg:h-[15rem]"></div>
         <Image
-          className="absolute right-40 top-3 "
+          className="absolute right-40 top-52 sm:top-3 "
           src="/img/circle.svg"
           alt="circle"
           width={80}
           height={80}
         />
         <Image
-          className="absolute left-[19rem] top-12 "
+          className="absolute left-[19rem] bottom-48 sm:top-12 "
           src="/img/circle.svg"
           alt="circle"
           width={30}
@@ -31,7 +31,7 @@ export default function Footer() {
           height={50}
         />
 
-        <div className="grid grid-cols-4 py-10 absolute w-full top-0">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 py-10 absolute w-full top-0 ">
           <div>
             <div>
               <Link className="flex items-center" href="/">

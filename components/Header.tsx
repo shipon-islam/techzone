@@ -1,25 +1,26 @@
 "use client";
+import { getCards } from "@/actions/card";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
 import { TbLogout } from "react-icons/tb";
 
-const navLinks: string[] = [
-  "Home",
-  "Products",
-  "About",
-  "Contact",
-  "dashboard/product-list",
-  "todos",
-];
-
+const navLinks: string[] = ["Home", "Products", "About", "Contact"];
+export const dynamic = "force-dynamic";
 export default function Header() {
   const [toggle, setToggle] = useState(true);
   const [isShowUser, setIsShowUser] = useState(false);
   const { data, status } = useSession();
+  const [cardCount, setCardCount] = useState<number>(0);
+
+  useEffect(() => {
+    getCards()
+      .then((res) => setCardCount(res.length))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <header className="sticky top-0 bg-[#FFF9EA] border-b border-gray-500 py-2 z-[100] text-gray-900">
@@ -43,7 +44,7 @@ export default function Header() {
             </Link>
           </div>
           <div className="flex gap-x-8">
-            <div>
+            <div className="hidden md:block">
               {navLinks.map((link: string, index) => (
                 <Link
                   key={index}
@@ -55,17 +56,18 @@ export default function Header() {
                 </Link>
               ))}
             </div>
+
             <div className="flex justify-between items-center gap-x-8 ">
               <button>
                 <FiSearch className="text-xl" />
               </button>
 
-              <button className="relative">
+              <Link href="/card-list" className="relative">
                 <FaCartShopping className="text-xl" />
                 <small className="absolute bg-primary text-[8px] inline-block px-1 rounded-full -top-1.5 -right-1">
-                  1
+                  {cardCount}
                 </small>
-              </button>
+              </Link>
               {status === "authenticated" ? (
                 <div>
                   <Image
@@ -141,32 +143,47 @@ export default function Header() {
                 </Link>
               )}
             </div>
+            <button
+              className="block lg:hidden"
+              onClick={() => setToggle((prev) => !prev)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-9 h-9 transition-all duration-500 text-slate-400"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d={
+                    toggle
+                      ? "M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
+                      : "M6 18L18 6M6 6l12 12"
+                  }
+                />
+              </svg>
+            </button>
           </div>
-
-          <button
-            className="block lg:hidden"
+        </nav>
+      </div>
+      <div
+        className={`${
+          toggle ? "hidden" : "flex"
+        } md:hidden flex-col gap-y-5  absolute bg-[#FFF9EA] w-full top-[3.2rem] pt-4 pb-8`}
+      >
+        {navLinks.map((link: string, index) => (
+          <Link
+            key={index}
+            className="ml-8 capitalize text-lg"
+            href={`/${link === "Home" ? "/" : link.toLowerCase()}`}
             onClick={() => setToggle((prev) => !prev)}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-9 h-9 transition-all duration-500 text-slate-400"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d={
-                  toggle
-                    ? "M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
-                    : "M6 18L18 6M6 6l12 12"
-                }
-              />
-            </svg>
-          </button>
-        </nav>
+            {link}
+          </Link>
+        ))}
       </div>
     </header>
   );

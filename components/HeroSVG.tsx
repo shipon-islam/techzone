@@ -5,28 +5,20 @@ export default function HeroSVG() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width="586"
       height="552"
+      className=""
+      preserveAspectRatio="xMidYMid meet"
       fill="none"
       viewBox="0 0 586 552"
     >
-      <g>
-        <g fill="#FFCB45">
-          <circle
-            className="animate-pulse "
-            cx="20.5"
-            cy="432.5"
-            r="20.5"
-          ></circle>
-          <circle className="animate-pulse " cx="523" cy="235" r="37"></circle>
-          <circle
-            className="animate-pulse "
-            cx="129.5"
-            cy="207.5"
-            r="9.5"
-          ></circle>
-          <circle className="animate-pulse " cx="103" cy="28" r="27"></circle>
+      <g id="img-hero">
+        <g id="shapes" fill="#FFCB45">
+          <circle id="circle4" cx="20.5" cy="432.5" r="20.5"></circle>
+          <circle id="circle3" cx="523" cy="235" r="37"></circle>
+          <circle id="circle2" cx="129.5" cy="207.5" r="9.5"></circle>
+          <circle id="circle1" cx="103" cy="28" r="27"></circle>
         </g>
-        <g>
-          <g filter="url(#filter0_d_1_73)">
+        <g id="mobile">
+          <g id="Ellipse 1" filter="url(#filter0_d_1_73)">
             <ellipse
               cx="331.587"
               cy="138.196"
@@ -36,12 +28,13 @@ export default function HeroSVG() {
             ></ellipse>
           </g>
           <path
+            id="unsplash:kcA-c3f_3FE"
             fill="url(#pattern0)"
             d="M213 28H454V265.48699999999997H213z"
           ></path>
         </g>
-        <g>
-          <g filter="url(#filter1_d_1_73)">
+        <g id="watch">
+          <g id="Ellipse 2" filter="url(#filter1_d_1_73)">
             <ellipse
               cx="433.062"
               cy="425.171"
@@ -50,10 +43,14 @@ export default function HeroSVG() {
               ry="111.826"
             ></ellipse>
           </g>
-          <path fill="url(#pattern1)" d="M288 284H586V537H288z"></path>
+          <path
+            id="Group 1 1"
+            fill="url(#pattern1)"
+            d="M288 284H586V537H288z"
+          ></path>
         </g>
-        <g>
-          <g filter="url(#filter2_d_1_73)">
+        <g id="airbuds">
+          <g id="Ellipse 3" filter="url(#filter2_d_1_73)">
             <ellipse
               cx="175.5"
               cy="356"
@@ -62,7 +59,11 @@ export default function HeroSVG() {
               ry="84"
             ></ellipse>
           </g>
-          <path fill="url(#pattern2)" d="M101 282H252V427.317H101z"></path>
+          <path
+            id="unsplash:ZwpX0AJ7GV8"
+            fill="url(#pattern2)"
+            d="M101 282H252V427.317H101z"
+          ></path>
         </g>
       </g>
       <defs>

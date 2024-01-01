@@ -1,10 +1,8 @@
-import { fetchUser } from "@/actions";
-import DeleteButton from "@/components/dashboard/DeleteButton";
+import prisma from "@/prisma/db";
 import { User } from "@/types";
 import Image from "next/image";
-
 export default async function Members() {
-  const users = await fetchUser();
+  const users = await prisma.user.findMany();
   return (
     <main>
       <div className="relative overflow-x-auto">
@@ -56,7 +54,7 @@ export default async function Members() {
                 <td className="py-4 px-6">{user.email}</td>
                 <td className="py-4 px-6">{user.role}</td>
                 <td className="py-4 px-6">
-                  <DeleteButton userId={user.id} />
+                  <button>X</button>
                 </td>
               </tr>
             ))}

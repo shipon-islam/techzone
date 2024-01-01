@@ -23,7 +23,7 @@ export default async function Home() {
               Get Started
             </button>
           </aside>
-          <div>
+          <div className="hidden">
             <HeroSVG />
           </div>
         </div>
@@ -44,7 +44,7 @@ export default async function Home() {
             Safety Until It Is In Your Hands.
           </p>
         </div>
-        <div className="grid grid-cols-3 justify-center  w-[80%] mx-auto">
+        <div className="grid  lg:grid-cols-3 justify-center  w-[80%] mx-auto">
           <ServiceCard
             photo="/img/order.png"
             headline="Easy To Order"
@@ -71,7 +71,7 @@ export default async function Home() {
             are happy
           </p>
         </div>
-        <div className="grid grid-cols-4 gap-x-12 mx-auto w-fit">
+        <div className="grid lg:grid-cols-4 gap-x-12 mx-auto w-fit">
           <ProductCard
             product_url="/img/watch.png"
             tittle="Analog Watch"
@@ -101,7 +101,7 @@ export default async function Home() {
           More product
         </button>
       </section>
-      <section className="mt-8  grid grid-cols-2 ">
+      <section className="mt-8 grid  sm:grid-cols-2 ">
         <aside className="grid grid-cols-2 ml-32">
           <Image
             src="/img/ledtv.png"
@@ -130,7 +130,7 @@ export default async function Home() {
           <h2 className="font-bold text-3xl w-[430px] mt-2 mb-10">
             What Our Customers Say About Us
           </h2>
-          <div className="flex gap-x-8 absolute top-36 z-[100]">
+          <div className=" hidden sm:flex  gap-x-8 absolute top-36 z-[100]">
             <ReviewCard />
             <ReviewCard />
           </div>
