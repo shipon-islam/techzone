@@ -3,6 +3,7 @@ import { getCards } from "@/actions/card";
 import { addCardAction } from "@/actions/product";
 import DeliveryInfo from "@/components/DeliveryInfo";
 import Rating from "@/components/Rating";
+import { SessionUser } from "@/types";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -19,7 +20,8 @@ export default function ProductInfo({ product }: any) {
   const [isExistCard, setisExistCard] = useState<boolean>(false);
 
   const handleCard = async (productId: string) => {
-    const userId = session?.user?.id;
+    const user = session?.user as SessionUser;
+    const userId = user.id;
     const addcard = await addCardAction(userId, productId);
     toast.success(addcard);
     location.reload();
