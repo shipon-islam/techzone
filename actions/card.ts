@@ -5,6 +5,35 @@ export const getCards = async () => {
   const cardlist = await prisma.cardList.findMany();
   return cardlist;
 };
+export const addCardAction = async (userId: string, productId: string) => {
+  const isExistCard = await prisma.cardList.findFirst({
+    where: {
+      productId: productId,
+    },
+  });
+  if (isExistCard) {
+    await prisma.cardList.delete({
+      where: {
+        id: isExistCard.id,
+      },
+    });
+    revalidatePath("/products/*");
+    return "removed";
+  }
+  await prisma.cardList.create({
+    data: {
+      quantity: 1,
+      product: {
+        connect: { id: productId },
+      },
+      user: {
+        connect: { id: userId },
+      },
+    },
+  });
+  revalidatePath("/products/*");
+  return "added";
+};
 
 export const cardQuantityAction = async (
   name: string,

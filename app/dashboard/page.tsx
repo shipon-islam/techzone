@@ -1,7 +1,7 @@
 export default function page() {
   return (
     <main>
-      <p>hdshf</p>
+      <p>dashboard</p>
     </main>
   );
 }

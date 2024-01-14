@@ -7,7 +7,6 @@ export default function DeleteCard({ id }: { id: string }) {
   const handleDelete = async (cardId: string) => {
     await cardDeleteAction(cardId);
     toast.success("removed");
-    location.reload();
   };
   return (
     <button onClick={() => handleDelete(id)}>

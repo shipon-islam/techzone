@@ -1,26 +1,17 @@
 "use client";
-import { getCards } from "@/actions/card";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
 import { TbLogout } from "react-icons/tb";
 
 const navLinks: string[] = ["Home", "Products", "About", "Contact"];
-export const dynamic = "force-dynamic";
-export default function Header() {
+export default function Navbar({ cards }: { cards: number }) {
   const [toggle, setToggle] = useState(true);
   const [isShowUser, setIsShowUser] = useState(false);
   const { data, status } = useSession();
-  const [cardCount, setCardCount] = useState<number>(0);
-
-  useEffect(() => {
-    getCards()
-      .then((res) => setCardCount(res.length))
-      .catch((err) => console.log(err));
-  }, []);
 
   return (
     <header className="sticky top-0 bg-[#FFF9EA] border-b border-gray-500 py-2 z-[100] text-gray-900">
@@ -65,7 +56,7 @@ export default function Header() {
               <Link href="/card-list" className="relative">
                 <FaCartShopping className="text-xl" />
                 <small className="absolute bg-primary text-[8px] inline-block px-1 rounded-full -top-1.5 -right-1">
-                  {cardCount}
+                  {cards}
                 </small>
               </Link>
               {status === "authenticated" ? (

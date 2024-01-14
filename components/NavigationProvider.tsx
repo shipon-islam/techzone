@@ -1,8 +1,8 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React from "react";
-import Footer from "./Footer";
-import Header from "./Header";
+import Navbar from "./dashboard/Navbar";
+import SideNavbar from "./dashboard/SideNavbar";
 
 export default function NavigationProvider({
   children,
@@ -11,12 +11,16 @@ export default function NavigationProvider({
 }) {
   const pathname = usePathname();
   return pathname.startsWith("/dashboard") ? (
-    children
+    <div>
+      <Navbar />
+      <div className="flex">
+        <SideNavbar />
+        <div className="pt-14 pl-4 text-gray-50 bg-gray-700 w-full">
+          {children}
+        </div>
+      </div>
+    </div>
   ) : (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
+    <>{children}</>
   );
 }

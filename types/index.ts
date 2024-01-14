@@ -1,3 +1,5 @@
+import { IconType } from "react-icons";
+
 export interface SessionUser {
   id: string;
   name?: string | null | undefined;
@@ -24,4 +26,15 @@ export type ProductType = {
   tittle: string;
   category: string;
   price: number;
+};
+export type DeleveryType = {
+  icon: IconType;
+  text: string;
+  head: string;
+};
+
+export type quantityBtnType = {
+  quantity: number;
+  id: string;
+  name: "plus" | "minus";
 };

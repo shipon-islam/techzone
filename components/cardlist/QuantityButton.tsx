@@ -1,11 +1,7 @@
 "use client";
 import { cardQuantityAction } from "@/actions/card";
+import { quantityBtnType } from "@/types";
 import { TbMinus, TbPlus } from "react-icons/tb";
-type quantityBtnType = {
-  quantity: number;
-  id: string;
-  name: "plus" | "minus";
-};
 
 export default function QuantityButton({
   name,

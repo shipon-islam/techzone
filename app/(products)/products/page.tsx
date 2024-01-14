@@ -1,18 +1,21 @@
+// import myphoto from "@/public/shipon2.jpg";
+import BlurImage from "@/components/BlurImage";
 import prisma from "@/prisma/db";
-import Image from "next/image";
 import Link from "next/link";
+export const dynamic = "force-dynamic";
 export default async function Products() {
   const products = await prisma.products.findMany();
+  // const blurWithProducts = await getBase64Many(products);
+
   return (
-    <div className="flex flex-wrap gap-10 container py-8 ">
+    <div className="flex flex-wrap gap-10 container py-8 bg-slate-600 ">
       {products.map((product) => (
         <Link key={product.id} href={`/products/${product.id}`}>
-          <Image
-            className="border"
+          <BlurImage
             src={product.images[0].url}
             alt="product"
-            width={100}
-            height={100}
+            width={200}
+            height={200}
           />
         </Link>
       ))}

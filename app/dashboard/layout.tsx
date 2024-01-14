@@ -1,5 +1,3 @@
-import Navbar from "@/components/dashboard/Navbar";
-import SideNavbar from "@/components/dashboard/SideNavbar";
 import "@uploadthing/react/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -16,15 +14,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div>
-      <Navbar />
-      <div className="flex">
-        <SideNavbar />
-        <div className="pt-14 pl-4 text-gray-50 bg-gray-700 w-full">
-          {children}
-        </div>
-      </div>
-    </div>
-  );
+  return <div>{children}</div>;
 }

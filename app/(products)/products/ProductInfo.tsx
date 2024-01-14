@@ -1,6 +1,5 @@
 "use client";
-import { getCards } from "@/actions/card";
-import { addCardAction } from "@/actions/product";
+import { addCardAction, getCards } from "@/actions/card";
 import DeliveryInfo from "@/components/DeliveryInfo";
 import Rating from "@/components/Rating";
 import { SessionUser } from "@/types";
@@ -23,8 +22,8 @@ export default function ProductInfo({ product }: any) {
     const user = session?.user as SessionUser;
     const userId = user.id;
     const addcard = await addCardAction(userId, productId);
+    setisExistCard((prev) => !prev);
     toast.success(addcard);
-    location.reload();
   };
 
   // add and remove wishlist

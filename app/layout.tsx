@@ -1,4 +1,6 @@
 import AuthProvider from "@/components/AuthProvider";
+import Footer from "@/components/Footer";
+import Header from "@/components/Headers/Header";
 import NavigationProvider from "@/components/NavigationProvider";
 import "@uploadthing/react/styles.css";
 import type { Metadata } from "next";
@@ -23,7 +25,9 @@ export default function RootLayout({
         <AuthProvider>
           <NavigationProvider>
             <Toaster position="top-center" reverseOrder={false} />
+            <Header />
             {children}
+            <Footer />
           </NavigationProvider>
         </AuthProvider>
       </body>
